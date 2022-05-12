@@ -47,7 +47,6 @@ public class BankAccountModel implements BankAccountRepository {
     public boolean transfer(String id1, String id2, double amount) {
         BankAccount b1 = getBankAccount(id1);
         BankAccount b2 = getBankAccount(id2);
-        System.out.println(id1 + " " + id2 + " " + amount);
         if (b1.getAmount() < amount) return false;
         b1.setAmount(b1.getAmount() - amount);
         b2.setAmount(amount + b2.getAmount());
