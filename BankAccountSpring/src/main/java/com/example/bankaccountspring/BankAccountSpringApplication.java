@@ -1,10 +1,8 @@
-package com.example.videospringdemo;
+package com.example.bankaccountspring;
 
-import com.example.videospringdemo.controller.Video;
-import com.example.videospringdemo.repository.VideoModel;
-import com.example.videospringdemo.repository.VideoModelNoDuplicate;
-import com.example.videospringdemo.repository.VideoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.bankaccountspring.controller.BankAccount;
+import com.example.bankaccountspring.repository.BankAccountModel;
+import com.example.bankaccountspring.repository.BankAccountRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,15 +18,12 @@ import java.util.Collection;
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @EnableWebMvc
 @Configuration
-public class VideoSpringDemoApplication {
+public class BankAccountSpringApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(VideoSpringDemoApplication.class, args);
+        SpringApplication.run(BankAccountSpringApplication.class, args);
     }
 
     @Bean
-    public VideoRepository videoRepository(){
-        return new VideoModelNoDuplicate();
-    }
+    public BankAccountRepository bankAccountRepository(){ return new BankAccountModel(); }
 }
-
