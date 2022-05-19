@@ -41,10 +41,14 @@ public class BankingController {
     @RequestMapping(value = "/accounting/transfer", method = RequestMethod.POST)
     public @ResponseBody boolean transfer(@RequestParam("accountnumber1") String accountnumber1, @RequestParam("accountnumber2") String accountnumber2, @RequestParam("amount") double amount) {
         Bankaccount acc1 = banking.findByAccountnumber(accountnumber1);
-        Bankaccount acc2 = banking.findByAccountnumber(accountnumber1);
-        if (acc1.getAmount() < amount)
-        tmp.setAmount(newamount);
-        banking.save(tmp);
+        Bankaccount acc2 = banking.findByAccountnumber(accountnumber2);
+        if (acc1.getAmount() < amount) {
+            return false;
+        }
+        acc1.setAmount(acc1.getAmount() - amount);
+        acc2.setAmount(acc2.getAmount() + amount);
+        banking.save(acc1);
+        banking.save(acc2);
         return true;
     }
 }
