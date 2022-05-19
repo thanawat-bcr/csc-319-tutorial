@@ -1,10 +1,11 @@
 package com.example.videospringdemo.repository;
 
 import com.example.videospringdemo.controller.Video;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;
 
-public interface VideoRepository {
+public interface VideoRepository extends CrudRepository<Video, Long> {
     // Add a Video
     public boolean addVideo(Video v);
     // Get the added videos
