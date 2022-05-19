@@ -21,12 +21,30 @@ public class BankingController {
     }
 
     @RequestMapping(value = "/accounting/searchAccount", method = RequestMethod.GET)
-    public @ResponseBody Collection<Bankaccount> getAccountByNumber(@RequestParam("accountnumber") String accountnumber) {
+    public @ResponseBody Bankaccount getAccountByNumber(@RequestParam("accountnumber") String accountnumber) {
         return banking.findByAccountnumber(accountnumber);
     }
 
     @RequestMapping(value = "/accounting/listAllAccount", method = RequestMethod.GET)
     public @ResponseBody Collection<Bankaccount> getAllAccounts() {
         return banking.findAll();
+    }
+
+    @RequestMapping(value = "/accounting/updateAccount", method = RequestMethod.POST)
+    public @ResponseBody boolean updateAccount(@RequestParam("accountnumber") String accountnumber, @RequestParam("newamount") double newamount) {
+        Bankaccount tmp = banking.findByAccountnumber(accountnumber);
+        tmp.setAmount(newamount);
+        banking.save(tmp);
+        return true;
+    }
+
+    @RequestMapping(value = "/accounting/transfer", method = RequestMethod.POST)
+    public @ResponseBody boolean transfer(@RequestParam("accountnumber1") String accountnumber1, @RequestParam("accountnumber2") String accountnumber2, @RequestParam("amount") double amount) {
+        Bankaccount acc1 = banking.findByAccountnumber(accountnumber1);
+        Bankaccount acc2 = banking.findByAccountnumber(accountnumber1);
+        if (acc1.getAmount() < amount)
+        tmp.setAmount(newamount);
+        banking.save(tmp);
+        return true;
     }
 }

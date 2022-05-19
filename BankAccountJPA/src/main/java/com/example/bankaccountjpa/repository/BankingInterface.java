@@ -7,6 +7,8 @@ import java.util.Collection;
 
 @Repository
 public interface BankingInterface extends CrudRepository<Bankaccount, String> {
-    public Collection<Bankaccount> findByAccountnumber(String accountnumber);
+    public Bankaccount findByAccountnumber(String accountnumber);
     public Collection<Bankaccount> findAll();
+
+
 }
