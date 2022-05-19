@@ -10,9 +10,9 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
-public class BankAccount {
+public class Bankaccount {
     @Id
-    private String accountNumber;
+    private String accountnumber;
     private String name;
     private String branch;
     private double amount;

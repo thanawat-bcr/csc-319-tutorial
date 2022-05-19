@@ -1,6 +1,6 @@
 package com.example.bankaccountjpa.controller;
 
-import com.example.bankaccountjpa.repository.BankAccount;
+import com.example.bankaccountjpa.repository.Bankaccount;
 import com.example.bankaccountjpa.repository.BankingInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,18 +15,18 @@ public class BankingController {
     private BankingInterface banking;
 
     @RequestMapping(value = "/accounting/createAccount", method = RequestMethod.POST)
-    public @ResponseBody boolean addAccount(@RequestBody BankAccount acc) {
+    public @ResponseBody boolean addAccount(@RequestBody Bankaccount acc) {
         banking.save(acc);
         return true;
     }
 
     @RequestMapping(value = "/accounting/searchAccount", method = RequestMethod.GET)
-    public @ResponseBody Collection<BankAccount> getAccountByNumber(@RequestParam("accountNumber") String accountNumber) {
-        return banking.findByAccountNumber(accountNumber);
+    public @ResponseBody Collection<Bankaccount> getAccountByNumber(@RequestParam("accountnumber") String accountnumber) {
+        return banking.findByAccountnumber(accountnumber);
     }
 
     @RequestMapping(value = "/accounting/listAllAccount", method = RequestMethod.GET)
-    public @ResponseBody Collection<BankAccount> getAllAccounts() {
+    public @ResponseBody Collection<Bankaccount> getAllAccounts() {
         return banking.findAll();
     }
 }
