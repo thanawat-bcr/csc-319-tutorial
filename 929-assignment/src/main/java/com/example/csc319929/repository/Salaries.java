@@ -16,13 +16,9 @@ import java.util.List;
 @Table(name = "salaries")
 public class Salaries {
     @Id
-//    @Column(name = "emp_no")
     private String empNo;
-//    @Column(name = "salary")
     private String salary;
-//    @Column(name = "from_date")
     private String fromDate;
-//    @Column(name = "to_date")
     private String toDate;
 
 }
