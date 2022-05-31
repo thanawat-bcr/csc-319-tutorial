@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository 
 public interface EmployeeInterface extends CrudRepository<Employees, String> {
-    public Employees findByEmpNo(String empNo);
+    public Employees findByEmpNo(int empNo);
 }

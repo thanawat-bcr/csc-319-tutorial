@@ -16,8 +16,8 @@ import java.util.List;
 @Table(name = "salaries")
 public class Salaries {
     @Id
-    private String empNo;
-    private String salary;
+    private int empNo;
+    private int salary;
     private String fromDate;
     private String toDate;
 

@@ -20,23 +20,23 @@ public class EmployeeController {
     private SalaryInterface salary;
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public @ResponseBody Employees getAccountByNumber(@RequestParam("id") String id) {
+    public @ResponseBody Employees getAccountByNumber(@RequestParam("id") int id) {
         return employee.findByEmpNo(id);
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
     public @ResponseBody void addEmployee(@RequestBody Map<String, String> json) {
-        String empNo = json.get("empNo");
+        int empNo = Integer.parseInt(json.get("empNo"));
         String birthDate = json.get("birthDate");
         String firstName = json.get("firstName");
         String lastName = json.get("lastName");
         String gender = json.get("gender");
         String hireDate = json.get("hireDate");
-        String salaryString = json.get("salary");
+        int salaryInteger = Integer.parseInt(json.get("salary"));
         String fromDate = json.get("fromDate");
         String toDate = json.get("toDate");
         Employees emp = new Employees(empNo, birthDate, firstName, lastName, gender, hireDate);
-        Salaries sal = new Salaries(empNo, salaryString, fromDate, toDate);
+        Salaries sal = new Salaries(empNo, salaryInteger, fromDate, toDate);
         employee.save(emp);
         salary.save(sal);
     }

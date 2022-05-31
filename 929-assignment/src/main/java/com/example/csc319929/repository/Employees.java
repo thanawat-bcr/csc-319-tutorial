@@ -19,14 +19,14 @@ import java.util.List;
 @Table(name = "employees")
 public class Employees {
     @Id
-    private String empNo;
+    private int empNo;
     private String birthDate;
     private String firstName;
     private String lastName;
     private String gender;
     private String hireDate;
 
-    public Employees(String empNo, String birthDate, String firstName, String lastName, String gender, String hireDate) {
+    public Employees(int empNo, String birthDate, String firstName, String lastName, String gender, String hireDate) {
         this.empNo = empNo;
         this.birthDate = birthDate;
         this.firstName = firstName;
