@@ -29,21 +29,27 @@ public class EmployeeController {
         return salary.findByEmpNo(id);
     }
 
-//    @RequestMapping(value = "/employee", method = RequestMethod.POST)
-//    public @ResponseBody boolean addEmployee(@RequestBody Map<String, String> json) {
-//        int empNo = Integer.parseInt(json.get("empNo"));
-//        String birthDate = json.get("birthDate");
-//        String firstName = json.get("firstName");
-//        String lastName = json.get("lastName");
-//        String gender = json.get("gender");
-//        String hireDate = json.get("hireDate");
-//        int salary = Integer.parseInt(json.get("salary"));
-//        String fromDate = json.get("fromDate");
-//        String toDate = json.get("toDate");
-//        Employees emp = new Employees(empNo, birthDate, firstName, lastName, gender, hireDate);
-//        Salaries sal = new Salaries(empNo, salary, fromDate, toDate);
-//        employee.save(emp);
+//    @RequestMapping(value = "/salary", method = RequestMethod.POST)
+//    public @ResponseBody boolean addEmployee(@RequestBody Salaries sal) {
 //        salary.save(sal);
 //        return true;
 //    }
+
+    @RequestMapping(value = "/employee", method = RequestMethod.POST)
+    public @ResponseBody boolean addEmployee(@RequestBody Map<String, String> json) {
+        String empNo = json.get("empNo");
+        String birthDate = json.get("birthDate");
+        String firstName = json.get("firstName");
+        String lastName = json.get("lastName");
+        String gender = json.get("gender");
+        String hireDate = json.get("hireDate");
+        String salaryString = json.get("salary");
+        String fromDate = json.get("fromDate");
+        String toDate = json.get("toDate");
+        Employees emp = new Employees(empNo, birthDate, firstName, lastName, gender, hireDate);
+        Salaries sal = new Salaries(empNo, salaryString, fromDate, toDate);
+        employee.save(emp);
+        salary.save(sal);
+        return true;
+    }
 }
