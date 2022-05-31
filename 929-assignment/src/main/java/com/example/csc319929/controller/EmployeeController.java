@@ -1,6 +1,5 @@
 package com.example.csc319929.controller;
 
-import com.example.csc319929.dto.EmployeeResponse;
 import com.example.csc319929.repository.EmployeeInterface;
 import com.example.csc319929.repository.Employees;
 import com.example.csc319929.repository.Salaries;
@@ -21,22 +20,12 @@ public class EmployeeController {
     private SalaryInterface salary;
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public @ResponseBody List<EmployeeResponse> getAccountByNumber(@RequestParam("id") String id) {
-        return employee.salaryEmployee(id);
+    public @ResponseBody Employees getAccountByNumber(@RequestParam("id") String id) {
+        return employee.findByEmpNo(id);
     }
-    @RequestMapping(value = "/salary", method = RequestMethod.GET)
-    public @ResponseBody Salaries getSalaryByNumber(@RequestParam("id") String id) {
-        return salary.findByEmpNo(id);
-    }
-
-//    @RequestMapping(value = "/salary", method = RequestMethod.POST)
-//    public @ResponseBody boolean addEmployee(@RequestBody Salaries sal) {
-//        salary.save(sal);
-//        return true;
-//    }
 
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
-    public @ResponseBody boolean addEmployee(@RequestBody Map<String, String> json) {
+    public @ResponseBody void addEmployee(@RequestBody Map<String, String> json) {
         String empNo = json.get("empNo");
         String birthDate = json.get("birthDate");
         String firstName = json.get("firstName");
@@ -50,6 +39,5 @@ public class EmployeeController {
         Salaries sal = new Salaries(empNo, salaryString, fromDate, toDate);
         employee.save(emp);
         salary.save(sal);
-        return true;
     }
 }
